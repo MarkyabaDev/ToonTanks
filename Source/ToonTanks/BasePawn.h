@@ -25,6 +25,7 @@ private:
 
 protected:
 	void RotateTurret(FVector LookAtTarget);
+	void Fire();
 
 public:
 	// Sets default values for this pawn's properties
