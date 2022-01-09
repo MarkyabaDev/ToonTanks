@@ -23,3 +23,17 @@ ABasePawn::ABasePawn()
 	ProjectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn Point"));
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
 }
+
+void ABasePawn::RotateTurret(FVector LookAtTarget)
+{
+	if (!TurretMesh)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Turret Mesh is not set on Actor %s"), *GetName());
+		return;
+	}
+
+	FVector ToTarget = LookAtTarget - TurretMesh->GetComponentLocation();
+	FRotator ToRotation(0, ToTarget.Rotation().Yaw, 0);
+
+	TurretMesh->SetWorldRotation(ToRotation);
+}

@@ -3,7 +3,6 @@
 
 #include "Tank.h"
 
-#include "DrawDebugHelpers.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -33,7 +32,7 @@ void ATank::Tick(float DeltaSeconds)
 		FHitResult HitResult;
 		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
 
-		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 12, 32, FColor::Red);
+		RotateTurret(HitResult.ImpactPoint);
 	}
 }
 

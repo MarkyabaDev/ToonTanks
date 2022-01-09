@@ -23,6 +23,9 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* ProjectileSpawnPoint;
 
+protected:
+	void RotateTurret(FVector LookAtTarget);
+
 public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
