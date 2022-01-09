@@ -3,6 +3,7 @@
 
 #include "Tank.h"
 
+#include "DrawDebugHelpers.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -15,6 +16,27 @@ ATank::ATank()
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera Component"));
 	CameraComp->SetupAttachment(SpringArmComp);
 }
+
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+
+	PlayerControllerRef = Cast<APlayerController, AController>(GetController());
+}
+
+void ATank::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+
+	if (PlayerControllerRef)
+	{
+		FHitResult HitResult;
+		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
+
+		DrawDebugSphere(GetWorld(), HitResult.ImpactPoint, 12, 32, FColor::Red);
+	}
+}
+
 
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {

@@ -28,11 +28,18 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* CameraComp;
 
+	APlayerController* PlayerControllerRef;
+
+protected:
+	virtual void BeginPlay() override;
+
 public:
 	ATank();
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	virtual void Tick(float DeltaSeconds) override;
 
 private:
 	void MoveForward(const float Value);
