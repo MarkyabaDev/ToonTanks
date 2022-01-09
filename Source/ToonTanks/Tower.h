@@ -20,6 +20,15 @@ private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Shooting", meta = (AllowPrivateAccess = "true"))
 	float FiringRange = 50.f;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Shooting", meta = (AllowPrivateAccess = "true"))
+	float FireRate = 2.0f;
+
+	FTimerHandle FireRateTimerHandle;
+
+	void CheckFireCondition();
+
+	bool IsTankInDistance();
+
 protected:
 	virtual void BeginPlay() override;
 
