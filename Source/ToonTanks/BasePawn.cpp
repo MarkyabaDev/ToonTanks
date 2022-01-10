@@ -43,6 +43,7 @@ void ABasePawn::Fire()
 {
 	if (ProjectileSpawnPoint && ProjectileClass)
 	{
-		GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnPoint->GetComponentLocation(), ProjectileSpawnPoint->GetComponentRotation());
+		AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnPoint->GetComponentLocation(), ProjectileSpawnPoint->GetComponentRotation());
+		Projectile->SetOwner(this);
 	}
 }
