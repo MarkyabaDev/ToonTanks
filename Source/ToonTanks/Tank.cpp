@@ -20,21 +20,29 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PlayerControllerRef = Cast<APlayerController, AController>(GetController());
+	TankPlayerController = Cast<APlayerController, AController>(GetController());
 }
 
 void ATank::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	if (PlayerControllerRef)
+	if (TankPlayerController)
 	{
 		FHitResult HitResult;
-		PlayerControllerRef->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
+		TankPlayerController->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
 
 		RotateTurret(HitResult.ImpactPoint);
 	}
 }
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+}
+
 
 
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -60,3 +68,9 @@ void ATank::Turn(const float Value)
 
 	AddActorLocalRotation(DeltaRotation, true);
 }
+
+APlayerController* ATank::GetTankPlayerController()
+{
+	return TankPlayerController;
+}
+

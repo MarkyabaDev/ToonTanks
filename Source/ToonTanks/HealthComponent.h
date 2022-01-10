@@ -20,6 +20,8 @@ private:
 
 	UFUNCTION()
 	void DamageTaken(AActor* DamagedActor, float Damage, const UDamageType* DamageType, class AController* Instigator, AActor* DamageGiver);
+
+	class AToonTanksGameMode* ToonTanksGameMode;
 public:	
 	// Sets default values for this component's properties
 	UHealthComponent();

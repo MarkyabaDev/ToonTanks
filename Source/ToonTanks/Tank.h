@@ -28,7 +28,7 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* CameraComp;
 
-	APlayerController* PlayerControllerRef;
+	APlayerController* TankPlayerController;
 
 protected:
 	virtual void BeginPlay() override;
@@ -40,6 +40,10 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	virtual void Tick(float DeltaSeconds) override;
+
+	void HandleDestruction();
+
+	APlayerController* GetTankPlayerController();
 
 private:
 	void MoveForward(const float Value);
