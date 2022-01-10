@@ -15,6 +15,9 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* BaseMesh;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+	class UProjectileMovementComponent* ProjectileMovementComponent;
+
 public:	
 	// Sets default values for this actor's properties
 	AProjectile();

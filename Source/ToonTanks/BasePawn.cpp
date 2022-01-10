@@ -3,7 +3,6 @@
 
 #include "BasePawn.h"
 
-#include "DrawDebugHelpers.h"
 #include "Components/CapsuleComponent.h"
 #include "Projectile.h"
 
