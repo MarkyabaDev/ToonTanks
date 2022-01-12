@@ -22,11 +22,16 @@ private:
 
 	void HandleGameStart();
 
+	int32 TargetTowers;
+	int32 GetTargetTowerCount();
 protected:
 	virtual void BeginPlay() override;
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void StartGame();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void GameOver(bool bWonGame);
 
 public:
 	void ActorDied(AActor* DeadActor);
