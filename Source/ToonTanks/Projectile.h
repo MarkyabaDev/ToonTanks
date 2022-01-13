@@ -21,7 +21,10 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	class UProjectileMovementComponent* ProjectileMovementComponent;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
+	UPROPERTY(VisibleAnywhere, Category = "Particles")
+	class UParticleSystemComponent* SmokeTrail;
+
+	UPROPERTY(EditAnywhere, Category = "Particles")
 	class UParticleSystem* HitParticle;
 
 	UFUNCTION()
