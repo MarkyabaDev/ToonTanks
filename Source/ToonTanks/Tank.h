@@ -34,6 +34,8 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	bool bAlive = true;
+
 	ATank();
 
 	// Called to bind functionality to input

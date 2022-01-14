@@ -34,7 +34,7 @@ void ATower::BeginPlay()
 
 void ATower::CheckFireCondition()
 {
-	if (IsTankInDistance())
+	if (IsTankInDistance() && Tank->bAlive)
 	{
 		Fire();
 	}
